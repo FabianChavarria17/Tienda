@@ -4,9 +4,9 @@
  */
 package com.tienda.service.impl;
 
-import com.tienda.dao.CategoriaDao;
-import com.tienda.domain.categoria;
-import com.tienda.service.CategoriaService;
+import com.tienda.dao.ProductoDao;
+import com.tienda.domain.Producto;
+import com.tienda.service.ProductoService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,15 +17,15 @@ import org.springframework.transaction.annotation.Transactional;
  * @author fabia
  */
 @Service
-public class CategoriaServiceImpl implements CategoriaService {
+public class ProductoServiceImpl implements ProductoService {
 
      @Autowired
-    private CategoriaDao categoriaDao;
+    private ProductoDao productoDao;
 
     @Override
     @Transactional(readOnly = true)
-    public List<categoria> getCategorias(boolean activos) {
-        List<categoria> lista = categoriaDao.findAll();
+    public List<Producto> getProductos(boolean activos) {
+        List<Producto> lista = productoDao.findAll();
         if (activos) {
             lista.removeIf(e -> !e.isActivo());
         }
@@ -34,20 +34,22 @@ public class CategoriaServiceImpl implements CategoriaService {
 
     @Override
     @Transactional(readOnly = true)
-    public categoria getCategoria(categoria categoria) {
-        return categoriaDao.findById(categoria.getIdCategoria()).orElse(null);
+    public Producto getProducto(Producto producto) {
+        return productoDao.findById(producto.getIdProducto()).orElse(null);
     }
 
     @Override
     @Transactional
-    public void save(categoria categoria) {
-        categoriaDao.save(categoria);
+    public void save(Producto producto) {
+        productoDao.save(producto);
     }
 
     @Override
     @Transactional
-    public void delete(categoria categoria) {
-        categoriaDao.deleteById(categoria.getIdCategoria());
+    public void delete(Producto producto) {
+        productoDao.deleteById(producto.getIdProducto());
     }
     
 }
+
+
