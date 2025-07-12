@@ -10,7 +10,7 @@
         <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
         <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
         <script th:src="@{/js/rutinas.js}"></script>
-        
+
     </head>
     <body>
         <header th:fragment="header" class="header">
@@ -31,6 +31,18 @@
                             <li class="nav-item px-2">
                                 <a class="nav-lonk" th:href="@{/usuario.listado}">[[#{plantilla.usuarios}]]</a>
                             </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" 
+                                   data-bs-toggle="dropdown" 
+                                   href="#" 
+                                   role="button" 
+                                   aria-expanded="false">[[#{plantilla.pruebas}]]</a>
+                                <ul class="dropdown-menu dropdown-menu-dark">
+                                    <li><a class="dropdown-item"  th:href="@{/pruebas/listado}">[[#{plantilla.asociaciones}]]</a></li>
+                                    <li><a class="dropdown-item"  th:href="@{/pruebas/listado2}">[[#{plantilla.consultas}]]</a></li>
+
+                                </ul>
+                            </li>
                         </ul>
 
                         <ul class="navbar-nav">
@@ -44,6 +56,7 @@
                                     <li>
                                         <a class="dropdown-item" th:href="@{/(lang=en)}">EN</a>
                                     </li>
+
                                 </ul>
                             </li>
                         </ul>
@@ -58,11 +71,11 @@
                         </div>
                     </div>
                 </div>
-                
+
             </section>
 
         </header>
-        
+
         <footer th:fragment="footer" class="bg-info text-white mt-5 p-2">
             <div class="container">
                 <div class="col">
