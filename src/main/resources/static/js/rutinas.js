@@ -1,3 +1,15 @@
+
+$(document).ready(function () {
+    if($("#resultsBlock").length > 0){
+        cargarLista();
+    }    
+});
+
+function cargarLista(){
+    var url = '/refrescarBoton';
+    $("#resultsBlock").load(url);
+}
+
 function readURL(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
